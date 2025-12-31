@@ -175,13 +175,16 @@ Contributions welcome! Add new clustering methods or visualizations.
 ## :question: FAQ
 
 Q: What data format?
+
 A: CSV (rows=samples, cols=genes/features), handles ~10K×2K
 ​
 
 Q: Production ready?
+
 A: Research-grade (v1.0). Add tests for production.
 
 Q: Why cosine distance?
+
 A: Captures RNA co-regulation patterns vs Euclidean magnitude
 
 
