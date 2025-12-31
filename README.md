@@ -215,7 +215,7 @@ A: Captures RNA co-regulation patterns vs Euclidean magnitude
 
 ![Snapshot9](assets/screenshots/CleanedData9.png)
 
-![Snapshot10](assets/screenshots/CleanedData10.png)
+![Snapshot10](Assets/Screenshots/CleanedData10.png)
 
 ![Snapshot11](assets/screenshots/CleanedData11.png)
 
