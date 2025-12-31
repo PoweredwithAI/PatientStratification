@@ -91,7 +91,7 @@ $ python src/clustering.py --data data/data.csv
 
 ```
 
-**Live Demo:** [https://targetscraper.streamlit.app/](https://targetscraper.streamlit.app/)
+**Live Demo:** [https://patient-stratification.streamlit.app/](https://patient-stratification.streamlit.app/)
 
 ##  :wrench: Development
 Would love collaborators
