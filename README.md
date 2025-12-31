@@ -6,18 +6,18 @@ Patient Clustering & Stratification Pipeline - Unsupervised analysis for high-di
 # Introduction
 This app demonstration an unsupervised learning pipeline for patient clustering and stratification. The app incorporates: 
 - Data cleaning for sparse omics data and near constant (low variable) features.    
-- Standardization and skewness normalization.  
+- Standardization (Robust Scaler) and skewness normalization (Log Normal).  
 - Outlier removal
-- Comparison of clustering of raw patient data with PCA / Autoencoder dimensionality reduction with   
-  - User control over publication years, number of articles to be checked and number of different targets to be presented   
-  - Upcoming versions to include clinical trials, and clinical guidelines.
+- Silhouette score comparison of clustering of raw patient data with PCA / Autoencoder reduction across KMeans, Spectral, and Agglomerative clustering.   
+  - Apply variance-weighted cosine distance for RNA-seq co-regulation patters to improve silhoutte score.    
+  - Upcoming versions to include more user controls and customization over data normalization and stardization techniques 
 
 ## :ledger: Index
 
 - [About](#beginner-about)
 - [Usage](#zap-usage)
   - [Installation](#electric_plug-installation)
-  - [Apps](#Apps)
+  - [Demo](#Demo)
 - [Development](#wrench-development)
   - [Pre-Requisites](#notebook-pre-requisites)
   - [Developmen Environment](#nut_and_bolt-development-environment)
@@ -33,22 +33,30 @@ This app demonstration an unsupervised learning pipeline for patient clustering 
 - [License](#lock-license)
 
 ##  :beginner: About
-Pioneer Spirit Platform (PSP) - Growing collection of AI tools:
+Comprehensive unsupervised clustering pipeline for patient stratification from high-dimensional gene expression data. Example RNA-Seq data. User can upload any high-dimensional omics data.
 
-Current Apps (v1.0)
+Note:
+- Rows : 1st row : Index. 2nd onwards : Different patient samples
+- Columns : 1st column : Patient Index. 2nd onwards : Omic feature
+ 
+ Handles sparsity (example set at 98.5% zero features), skewness, outliers, and compares PCA/Autoencoder dimensionality reduction with KMeans, Spectral, and Agglomerative clustering. 
+ 
+ Key innovation: Variance-weighted cosine distance for RNA-seq co-regulation patterns (12.5% → 74.1% silhouette score improvement):
 
-| App               | Description                       | Status  | Notes |
+Current Features (v1.0)
+
+| App               | Description                       | Status  | Test Silhoutte Score |
 | ----------------- | --------------------------------- | ------- |-------------------|
-| 🧬 TargetScraper  | Europe PMC → Gene/protein targets | ✅ Live  | ➡️ v1.0 of App |
-| 📊 ClinicalTrials | NCT extraction + drug mapping     | ➡️ v2.0 | Under Development |
-| 🏥 Clinical Guidelines| Protocols + Patient Population + CPT Codes     | ➡️ v2.0 | Under Development |
-| 💊 AI Hit Library | LSTM based SMILES generative modeling    | ➡️ v2.0 | Developed for generating Anti-Obesity hits with polypharmacology against multiple targets, not integrated into App | 
-| 💊 AI Hit Library | S4 based SMILES generative modeling    | ➡️ v2.0 | ➡️ v2.0 of App| 
-| 🧪 EC50 Prediction | RM Ensemble based binding affinity prediction   | ➡️ v2.0 | Developed, not integrated into App |
-| 🔬 Boltz2 Integration | Boltz2 based ligand docking and protein strucutre prediction   | ➡️ v2.0 | Developed, not integrated into App | 
-| 🤖 RetroSynthesis models | Transformer based retrosynthesis prediction   | ➡️ v2.0 | Developed, not integrated into App | 
+| 🧹 Preprocessing  | Sparse/low-var filtering, log-transform, RobustScaler, IsolationForest | ✅ Live  | N/A |
+| 📉 Dimensionality Reduction | PCA (10D), Autoencoder (10D latent)| ✅ Live  | N/A |
+| 🤖 Clustering| KMeans, Spectral (RBF), Agglomerative (Ward)| ✅ Live  | 3.36 (KMeans PCA) |
+| 🔬 Advanced | Variance-weighted cosine Agglomerative (find optimal k) | ✅ Live  | 0.741 | 
+| 📊 Visualization | UMAP comparison, knee plots, dendrograms | ✅ Live  | N/A | 
+| 🖥️ Streamlit App | Full pipeline + interactive controls | ✅ Live  | N/A |
 
-**First Milestone:** TargetScraper automatically mines 2024-2025 literature for anti-obesity drug targets (gene/protein mentions)**Prioritization:** → Integration of developed apps v2.0 → v2.0 of individual apps.
+
+**Result Summary:** PCA reduction yielded best clustering (0.36 silhouette), Agglomerative excelled on non-spherical data, variance-weighted cosine achieved state-of-the-art separation for gene expression.
+
 
 ## :zap: Usage
 
@@ -57,22 +65,32 @@ Current Apps (v1.0)
 - Steps on how to install this project, to use it.
 
 ```
-$ git clone https://github.com/PoweredwithAI/PSP.git
-$ cd PSP
+$ git clone https://github.com/PoweredwithAI/PatientStratification.git
+$ cd PatientStratification
 $ poetry install
 $ poetry shell
 
 ```
 
-###  :zap: Apps
+###  :zap: Demo
 
-- Commands to start the project.
+Live App: streamlit run streamlit/app.py
+- Upload CSV (samples × genes)
+- Auto preprocessing + 5 clustering methods
+- Interactive UMAP/dendrogram exploration
+- Download cluster annotations
+
+Sample Workflow:
 
 ```
-$ # TargetScraper (current)
-$ streamlit run src/targetscraper/app.py
+$ # Full pipeline
+$ streamlit run streamlit/app.py
+
+$ # CLI usage (future)
+$ python src/clustering.py --data data/data.csv
 
 ```
+
 **Live Demo:** [https://targetscraper.streamlit.app/](https://targetscraper.streamlit.app/)
 
 ##  :wrench: Development
@@ -86,10 +104,11 @@ Would love collaborators
 - Setting up the working environment.
 
 ```
-$ git clone https://github.com/PoweredwithAI/PSP.git
-$ cd PSP
-$ poetry install
-$ pre-commit install
+$ # Full pipeline
+$ streamlit run streamlit/app.py
+
+$ # CLI usage (future)
+$ python src/clustering.py --data data/raw/patients_raw.csv
 
 ```
 
@@ -97,84 +116,46 @@ $ pre-commit install
 
 ```
 PatientStratification/
-├── pyproject.toml
+├── pyproject.toml          # Dependencies
 ├── poetry.lock
 ├── README.md
-├── .gitignore
-│
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── data_io.py
-│   ├── preprocessing.py
-│   ├── dimensionality_reduction.py
-│   ├── clustering.py
-│   ├── visualization.py
-│   └── utils.py
-│
 ├── streamlit/
-│   ├── app.py
-│   └── config.yaml
-│
-├── data/
+│   ├── app.py             # 🔬 Main dashboard
+│   └── config.yaml        # Pipeline params 
+├── src/                   # Core library
+│   ├── __init__.py        # Exports 
+│   ├── config.py          # Config dataclass 
+│   ├── preprocessing.py   # Sparse filtering, scaling 
+│   ├── dimensionality_reduction.py  # PCA, Autoencoder 
+│   ├── clustering.py      # KMeans/Spectral/Agglo + cosine 
+│   └── visualization.py   # UMAP, dendrograms 
+├── data/                  # Sample data
 │   ├── raw/
-│   │   └── patients_raw.csv
 │   └── processed/
-│       └── patients_clean.csv
-│
-├── artifacts/
-│   ├── models/
-│   │   └── autoencoder_latent.npy
-│   ├── clustering/
-│   │   ├── raw_clusters.csv
-│   │   ├── pca_clusters.csv
-│   │   ├── ae_clusters.csv
-│   │   └── agg_variance_weighted_cosine.csv
-│   └── figures/
-│       ├── umap_all_clusterings.png
-│       ├── knee_plot.png
-│       └── dendrogram.png
-│
-├── notebooks/
-│   └── 01_patient_clustering_exploration.ipynb
-│
-└── tests/
-    ├── __init__.py
-    ├── test_preprocessing.py
-    ├── test_dimensionality_reduction.py
-    ├── test_clustering.py
-    └── test_visualization.py
+├── artifacts/             # Outputs
+│   ├── clustering/        # CSV results
+│   └── figures/           # UMAP, knee_plot.png
+├── notebooks/             # Exploration
+└── tests/                 # Unit tests
 
-
-.
-├── assets/                    # screenshots, etc 
-├── src/
-│   ├── targetscraper/         # 🧬 App 1: Literature → Targets
-│   │   ├── app.py             # Streamlit UI
-│   │   ├── d01_data/          # Scrape articles from Europe PMC API
-│   │   ├── d01_integmediate/  # Extract Gene / Protein annotations 
-|   |   └── d03_processing/    # Analyze dataset, build linkages and final outputs
-├── pyproject.toml             # Multi-app dependencies
-└── README.md
 ```
 
 ###  :hammer: Build
-poetry build      # Wheel + sdist
-poetry publish    # PyPI (future)
 
+```
+$ poetry build      # Wheel + sdist
+$ poetry publish    # PyPI (future)
 
-### :rocket: Deployment
-Streamlit Cloud or Google Cloud (under development)
-
+```
 ### :roadmap: Roadmap
 
-v1.0 (Live)    🧬 TargetScraper (Europe PMC)
-v2.0 (H1 2026) 📊 AI Hit library generative + Boltz2 + RS Transformer integrations
-v3.0 (H2 2026) 🧪 ClinicalTrial + Clinical Guidelines
+v1.0 (Live)    🧬 CLI interface, batch processing
+v2.0 (H1 2026) 📊 scikit-learn Pipeline integration, HDBSCAN
+v3.0 (H2 2026) 🧪 Multi-omics (scRNA + proteomics), biomarker discovery
 
 ## :cherry_blossom: Community
 
-Platform contributions welcome! Add new apps to src/.
+Contributions welcome! Add new clustering methods or visualizations.
 
  ###  :fire: Contribution
 
@@ -193,11 +174,16 @@ Platform contributions welcome! Add new apps to src/.
 
 ## :question: FAQ
 
-Q: How do I add a new app?
-A: src/new-app/app.py + pyproject.toml deps → poetry install → PR.
+Q: What data format?
+A: CSV (rows=samples, cols=genes/features), handles ~10K×2K
+​
 
 Q: Production ready?
-A: Demo quality (v1.0). 
+A: Research-grade (v1.0). Add tests for production.
+
+Q: Why cosine distance?
+A: Captures RNA co-regulation patterns vs Euclidean magnitude
+
 
 ##  :camera: Gallery
 
