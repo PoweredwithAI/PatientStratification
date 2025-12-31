@@ -187,19 +187,34 @@ A: Captures RNA co-regulation patterns vs Euclidean magnitude
 
 ##  :camera: Gallery
 
-### TargetScraper (v1.0)
+### Patient Clustering Pipeline (v1.1)
 
-![TargetScraper Home](assets/screenshots/targetscraper-home.png)
+![Opening Screen](assets/screenshots/OpeningScreen.png)
 *Clean interface ready for mining*
 
-![TargetScraper Results1](assets/screenshots/targetscraper-result1.png)
-*Article mentioning obesity targets (2023-2025, 200 articles)*
+![Processing Screen](assets/screenshots/Processing Data.png)
 
-![TargetScraper Results2](assets/screenshots/targetscraper-results2.png)
-*Top obesity targets ranked by article mentions (2023-2025, 200 articles, 50 top common targets) + UniProt integration*
+![Snapshot1](assets/screenshots/CleanedData1.png)
 
-![TargetScraper Detail](assets/screenshots/targetscraper-detail.png)
-*Article links for target P32301 (GLPR)*
+![Snapshot2](assets/screenshots/CleanedData2.png)
+
+![Snapshot3](assets/screenshots/CleanedData3.png)
+
+![Snapshot4](assets/screenshots/CleanedData4.png)
+
+![Snapshot5](assets/screenshots/CleanedData5.png)
+
+![Snapshot6](assets/screenshots/CleanedData6.png)
+
+![Snapshot7](assets/screenshots/CleanedData7.png)
+
+![Snapshot8](assets/screenshots/CleanedData8.png)
+
+![Snapshot9](assets/screenshots/CleanedData9.png)
+
+![Snapshot10](assets/screenshots/CleanedData10.png)
+
+![Snapshot11](assets/screenshots/CleanedData11.png)
 
 ### Apps developed but not integrated (v1.0)
 
