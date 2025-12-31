@@ -223,18 +223,21 @@ A: Demo quality (v1.0).
 
 *7:24 walkthrough: Hit generation → t-SNE → Retrosynthesis → Boltz-2 docking*
 
-**Key Features Demonstrated:**
+**Key Visualizations:**
 
-- Hit Generation: 174 anti-obesity candidates (GLP-1/GIP/Glucagon polypharmacology)
-- t-SNE Explorer: Chemical space navigation + EC50 predictions
-- Retrosynthesis: Transformer model (USPTO + 1B reactions)
-- Boltz-2 Integration: Diffusion-based protein docking (10 min/candidate)
+- UMAP Grid: Raw(↑) vs PCA(↓) vs AE (9 panels)
+- Knee Plot: Silhouette vs k (elbow k=8)
+- Dendrogram: Complete linkage, cosine distance
+- Skewness: Pre/post log1p histograms
+​
+Live Demo: streamlit run streamlit/app.py → Upload → "Run Full Pipeline"
 
 ## :star2: Credit/Acknowledgment
 
-- Europe PMC (TargetScraper data source)
-- UniProt
-- Deployement partner
+- Prof. Hamim Zafar - EE965 (Unsupervised Learning) instructor - https://www.iitk.ac.in/hamim-zafar
+​- scikit-learn: KMeans, Spectral, Agglomerative, IsolationForest
+- umap-learn: Dimensionality visualization
+- Streamlit: Interactive dashboard
 
 ##  :lock: License
 MIT - Free for research, commercial.
