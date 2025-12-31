@@ -1,0 +1,11 @@
+app_title: "EE965: Unsupervised Clustering Dashboard"
+data_path: "data/data.csv"
+output_dir: "data/outputs/"
+random_seed: 42
+n_clusters: 8
+ae_latent_dim: 10
+sparsity_threshold: 0.985
+contamination: 0.01
+pca_components: 50
+autoencoder_epochs: 50
+autoencoder_batch_size: 32
