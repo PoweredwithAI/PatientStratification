@@ -1,0 +1,51 @@
+[project]
+name = "patient-clustering"
+version = "0.1.0"
+description = "Package for Patient Clustering (using Unsupervised Learning to clustering patients based their omics data)"
+authors = [
+    {name = "Akshay Kakar",email = "akshaykakar@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12.4, <3.15"
+dependencies = [
+    # Core
+    "requests>=2.0",
+    "tqdm>=4.0",
+    "scikit-learn>=1.6",
+    "scipy>=1.11,<1.15",
+
+    # Data stack (pin to avoid numpy 2.x breakage)
+    "numpy>=1.24,<2.0",
+    "pandas>=2.0,<2.3",
+
+    # App/UI
+    "streamlit>=1.0",
+    "matplotlib==3.8.4",
+    "seaborn == 0.13.2",
+    "plotly == 6.5.0",
+
+    # LLM
+    "google-genai>=0.4.0",
+
+    # Excel / IO
+    "openpyxl == 3.1.5",
+
+    # Clustering / extras
+    "umap-learn == 0.5.9.post2",
+    "kneed == 0.8.5", 
+    "torch == 2.9.1", 
+    "pyyaml (>=6.0.3,<7.0.0)", 
+    "tensorflow (<2.17)"
+]
+
+[tool.poetry]                                   # Add Poetry section
+name = "patient-clustering"
+version = "0.1.0"
+description = "Patient Clustering Package"
+authors = ["Akshay Kakar <akshaykakar@gmail.com>"]
+packages = [{include = "src"}]                  # Poetry packages
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
