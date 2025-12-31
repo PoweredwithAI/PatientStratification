@@ -207,17 +207,17 @@ A: Captures RNA co-regulation patterns vs Euclidean magnitude
 
 ![Snapshot5](Assets/Screenshots/CleanedData5.png)
 
-![Snapshot6](assets/screenshots/CleanedData6.png)
+![Snapshot6](Assets/Screenshots/CleanedData6.png)
 
-![Snapshot7](assets/screenshots/CleanedData7.png)
+![Snapshot7](Assets/Screenshots/CleanedData7.png)
 
-![Snapshot8](assets/screenshots/CleanedData8.png)
+![Snapshot8](Assets/Screenshots/CleanedData8.png)
 
-![Snapshot9](assets/screenshots/CleanedData9.png)
+![Snapshot9](Assets/Screenshots/CleanedData9.png)
 
 ![Snapshot10](Assets/Screenshots/CleanedData10.png)
 
-![Snapshot11](assets/screenshots/CleanedData11.png)
+![Snapshot11](Assets/Screenshots/CleanedData11.png)
 
 ### Apps developed but not integrated (v1.0)
 
