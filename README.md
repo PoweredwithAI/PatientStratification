@@ -192,32 +192,32 @@ A: Captures RNA co-regulation patterns vs Euclidean magnitude
 
 ### Patient Clustering Pipeline (v1.1)
 
-![Opening Screen](assets/screenshots/OpeningScreen.png)
+![Opening Screen](Assets/Screenshots/OpeningScreen.png)
 *Clean interface ready for mining*
 
-![Processing Screen](assets/screenshots/Processing Data.png)
+!![Processing Screen](Assets/Screenshots/ProcessingData.png)
 
-![Snapshot1](assets/screenshots/CleanedData1.png)
+![Snapshot1](Assets/Screenshots/CleanedData1.png)
 
-![Snapshot2](assets/screenshots/CleanedData2.png)
+![Snapshot2](Assets/Screenshots/CleanedData2.png)
 
-![Snapshot3](assets/screenshots/CleanedData3.png)
+![Snapshot3](Assets/Screenshots/CleanedData3.png)
 
-![Snapshot4](assets/screenshots/CleanedData4.png)
+![Snapshot4](Assets/Screenshots/CleanedData4.png)
 
-![Snapshot5](assets/screenshots/CleanedData5.png)
+![Snapshot5](Assets/Screenshots/CleanedData5.png)
 
-![Snapshot6](assets/screenshots/CleanedData6.png)
+![Snapshot6](Assets/Screenshots/CleanedData6.png)
 
-![Snapshot7](assets/screenshots/CleanedData7.png)
+![Snapshot7](Assets/Screenshots/CleanedData7.png)
 
-![Snapshot8](assets/screenshots/CleanedData8.png)
+![Snapshot8](Assets/Screenshots/CleanedData8.png)
 
-![Snapshot9](assets/screenshots/CleanedData9.png)
+![Snapshot9](Assets/Screenshots/CleanedData9.png)
 
-![Snapshot10](assets/screenshots/CleanedData10.png)
+![Snapshot10](Assets/Screenshots/CleanedData10.png)
 
-![Snapshot11](assets/screenshots/CleanedData11.png)
+![Snapshot11](Assets/Screenshots/CleanedData11.png)
 
 ### Apps developed but not integrated (v1.0)
 
