@@ -92,6 +92,7 @@ $ python src/clustering.py --data data/data.csv
 ```
 
 **Live Demo:** [https://patient-stratification.streamlit.app/](https://patient-stratification.streamlit.app/)
+**Platform Walkthrough:**[https://youtu.be/IoJURctGlI4](https://youtu.be/IoJURctGlI4)
 
 ##  :wrench: Development
 Would love collaborators
